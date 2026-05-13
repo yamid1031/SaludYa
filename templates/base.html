@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SaludYa{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{% block body_class %}app-page{% endblock %}">
+    <div class="site-frame">
+        {% if request.endpoint not in ['login', 'registro'] %}
+        <header class="site-header">
+            <a class="brand" href="{{ url_for('panel') if session.get('usuario') else url_for('login') }}">
+                <span class="brand-mark">
+                    <img src="{{ url_for('static', filename='saludya-mark.svg') }}" alt="SaludYa">
+                </span>
+                <span class="brand-name">SaludYa</span>
+            </a>
+
+            {% if session.get('usuario') %}
+            <nav class="site-nav" aria-label="Navegación principal">
+                <a class="{% if request.endpoint == 'panel' %}is-active{% endif %}" href="{{ url_for('panel') }}">Panel</a>
+                <a class="{% if request.endpoint == 'cita' %}is-active{% endif %}" href="{{ url_for('cita') }}">Agendar</a>
+                <a class="{% if request.endpoint == 'historial' %}is-active{% endif %}" href="{{ url_for('historial') }}">Historial</a>
+                <a class="logout-link" href="{{ url_for('logout') }}">Salir</a>
+            </nav>
+            {% endif %}
+        </header>
+        {% endif %}
+
+        <main class="page-main">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-stack" role="status" aria-live="polite">
+                    {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>
