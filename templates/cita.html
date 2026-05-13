@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Agendar cita | SaludYa{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div>
+        <p class="eyebrow">Nueva cita</p>
+        <h1>Agenda tu próxima atención</h1>
+        <p class="hero-text">
+            Elige fecha, hora y servicio para {{ usuario["nombre"] or usuario["correo"] }}.
+        </p>
+    </div>
+</section>
+
+<section class="form-surface">
+    <div class="panel-heading">
+        <p class="eyebrow">Programación</p>
+        <h2>Formulario de cita</h2>
+        <p>Completa los datos y confirma tu reserva.</p>
+    </div>
+
+    <form class="form-grid" action="/guardar_cita" method="POST">
+        <div class="form-row">
+            <label class="form-field">
+                <span>Fecha</span>
+                <input type="date" name="fecha" required>
+            </label>
+
+            <label class="form-field">
+                <span>Hora</span>
+                <input type="time" name="hora" required>
+            </label>
+        </div>
+
+        <label class="form-field">
+            <span>Servicio</span>
+            <select name="servicio" required>
+                <option>Consulta general</option>
+                <option>Medicina interna</option>
+                <option>Odontología</option>
+                <option>Pediatría</option>
+                <option>Ginecología</option>
+                <option>Otorrinolaringología</option>
+                <option>Dermatología</option>
+                <option>Cardiología</option>
+            </select>
+        </label>
+
+        <button class="btn btn-primary btn-block" type="submit">Agendar cita</button>
+    </form>
+</section>
+{% endblock %}
