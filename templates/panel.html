@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Panel | SaludYa{% endblock %}
+
+{% block content %}
+<section class="hero-banner">
+    <div class="hero-copy">
+        <p class="eyebrow">Portal de pacientes</p>
+        <h1>Hola, {{ usuario["nombre"] or usuario["correo"] }}</h1>
+        <p class="hero-text">
+            Administra tus citas y consulta tu historial en un espacio claro, rápido y cómodo.
+        </p>
+    </div>
+
+    <div class="hero-side">
+        <div class="hero-stat">
+            <span class="stat-label">Cuenta activa</span>
+            <strong>{{ usuario["correo"] }}</strong>
+        </div>
+        <div class="hero-stat">
+            <span class="stat-label">Acceso actual</span>
+            <p>Sesión lista para agendar o revisar consultas.</p>
+        </div>
+    </div>
+</section>
+
+<section class="action-grid">
+    <article class="action-card">
+        <p class="card-kicker">Agenda</p>
+        <h2>Reserva una nueva cita</h2>
+        <p>Selecciona fecha, hora y tipo de servicio en pocos pasos.</p>
+        <a class="btn btn-primary" href="{{ url_for('cita') }}">Agendar cita</a>
+    </article>
+
+    <article class="action-card">
+        <p class="card-kicker">Seguimiento</p>
+        <h2>Consulta tu historial</h2>
+        <p>Revisa fácilmente las citas que ya has registrado.</p>
+        <a class="btn btn-secondary" href="{{ url_for('historial') }}">Ver historial</a>
+    </article>
+
+    <article class="action-card">
+        <p class="card-kicker">Sesión</p>
+        <h2>Mantén tu acceso bajo control</h2>
+        <p>Cierra tu sesión cuando termines para mantener tu cuenta protegida.</p>
+        <a class="btn btn-ghost" href="{{ url_for('logout') }}">Cerrar sesión</a>
+    </article>
+</section>
+{% endblock %}
