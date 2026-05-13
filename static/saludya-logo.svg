@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 920" role="img" aria-labelledby="title desc">
+  <title id="title">SaludYa IPS</title>
+  <desc id="desc">Logo completo de SaludYa IPS con borde circular y simbolo medico.</desc>
+  <defs>
+    <linearGradient id="teal" x1="27%" y1="24%" x2="76%" y2="80%">
+      <stop offset="0%" stop-color="#62d5c9"/>
+      <stop offset="100%" stop-color="#138f88"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#0f5f5b" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect width="920" height="920" fill="#ffffff"/>
+  <circle cx="460" cy="460" r="408" fill="none" stroke="#c6f1ed" stroke-width="10"/>
+  <g filter="url(#softShadow)">
+    <path d="M545 188H395c-83 0-151 68-151 151 0 57 31 107 79 134" fill="none" stroke="#062f39" stroke-linecap="round" stroke-width="52"/>
+    <path d="M304 483h163c90 0 164-74 164-164 0-60-33-114-85-142" fill="none" stroke="url(#teal)" stroke-linecap="round" stroke-width="52"/>
+    <rect x="407" y="274" width="49" height="153" rx="18" fill="url(#teal)"/>
+    <rect x="355" y="326" width="153" height="49" rx="18" fill="url(#teal)"/>
+    <circle cx="629" cy="183" r="24" fill="#5fd4c8"/>
+    <circle cx="590" cy="251" r="24" fill="#31b4a6"/>
+    <circle cx="650" cy="256" r="24" fill="#52d1c4"/>
+  </g>
+  <text x="460" y="665" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="118" font-weight="600" fill="#072f39" letter-spacing="0">
+    Salud<tspan fill="url(#teal)">Ya</tspan>
+  </text>
+  <text x="460" y="770" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="56" font-weight="500" fill="#62d5c9" letter-spacing="10">
+    — IPS —
+  </text>
+</svg>
