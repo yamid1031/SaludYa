@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Historial | SaludYa{% endblock %}
+
+{% block content %}
+<section class="page-hero compact-hero">
+    <div>
+        <p class="eyebrow">Seguimiento</p>
+        <h1>Historial de citas</h1>
+        <p class="hero-text">
+            Consulta las citas registradas para {{ usuario["nombre"] or usuario["correo"] }}.
+        </p>
+    </div>
+
+    <div class="count-badge">
+        {{ citas|length }} cita{% if citas|length != 1 %}s{% endif %}
+    </div>
+</section>
+
+{% if citas %}
+<section class="table-panel">
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Servicio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cita in citas %}
+            <tr>
+                <td data-label="Fecha">{{ cita["fecha"] }}</td>
+                <td data-label="Hora">{{ cita["hora"] }}</td>
+                <td data-label="Servicio">
+                    <span class="service-pill">{{ cita["servicio"] }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% else %}
+<section class="empty-state">
+    <p class="eyebrow">Aún no hay registros</p>
+    <h2>No tienes citas agendadas</h2>
+    <p>Cuando programes una cita, aparecerá aquí con su fecha, hora y servicio.</p>
+    <a class="btn btn-primary" href="{{ url_for('cita') }}">Agendar mi primera cita</a>
+</section>
+{% endif %}
+{% endblock %}
